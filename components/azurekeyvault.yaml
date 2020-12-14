@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: azurekeyvault
+  namespace: default
+spec:
+  type: secretstores.azure.keyvault
+  metadata:
+    - name: vaultName
+      value: weeuaksdelkv02-new
+    - name: spnTenantId
+      value: "3c8ea0e4-127c-4a02-ac65-58830e4ac608"
+    - name: spnClientId
+      value: "bcbc812f-b752-46fb-8e95-7574198b8228"
+    - name: spnCertificateFile
+      value : "E:/d_backup/saran/test/kotlin_microservice/daprservice/components/delspncert.pfx"

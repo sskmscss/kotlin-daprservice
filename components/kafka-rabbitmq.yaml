@@ -1,0 +1,19 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.rabbitmq
+  metadata:
+    - name: host
+      value: "amqp://dapruser1:dapruser1@40.68.94.37:5672"
+    - name: consumerID
+      value: myConsumerID
+    - name: durable
+      value: true
+    - name: deletedWhenUnused
+      value: false
+    - name: autoAck
+      value: false
+    - name: deliveryMode
+      value: 0
