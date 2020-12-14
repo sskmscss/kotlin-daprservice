@@ -1,0 +1,28 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.kafka
+  metadata:
+  # Kafka broker connection setting
+  - name: brokers
+    value: pkc-lq8gm.westeurope.azure.confluent.cloud:9092
+  # consumer configuration: topic and consumer group
+  - name: topics
+    value: kotlindapr
+  - name: consumerGroup
+    value: testdaprconsumer
+  # publisher configuration: topic
+#  - name: publishTopic
+#    value: kotlindapr
+#  - name: authRequired
+#    value: "false"
+  - name: authRequired
+    value: "true"
+    # Only available is authRequired is set to true
+  - name: saslUsername
+    value: GHEF4JHYMYPE2EQV
+    # Only available is authRequired is set to true
+  - name: saslPassword
+    value: w9Z7vlY3RcWB3rD1Q1bgj/NmpDiopNHegNIFna6CQYamK6oOCRG/+yAXthdSNRJV

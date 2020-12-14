@@ -1,0 +1,24 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+  namespace: <NAMESPACE>
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+    # Kafka broker connection setting
+    - name: brokers
+      # Comma separated list of kafka brokers
+      #value: "pkc-lq8gm.westeurope.azure.confluent.cloud:9092"
+      #value: "localhost:9092"
+      value: "20.73.223.26:31090,20.73.216.69:31090,20.73.150.164:31090"
+      # Enable auth. Default is "false"
+    - name: authRequired
+      value: "false"
+      # Only available is authRequired is set to true
+    - name: saslUsername
+      value: O65URUDM6574HHMC
+      # Only available is authRequired is set to true
+    - name: saslPassword
+      value: LUtb1XSTOdQuVjOyeYd3aAJmCX/qsnXQhzZwb+xOanQkB6qIaYxdXvL5hFqIkYJT
