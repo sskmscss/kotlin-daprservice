@@ -8,7 +8,7 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.dapr</groupId>
+	<groupId>scm</groupId>
 	<artifactId>service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Dapr Service</name>
@@ -136,7 +136,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<mainClass>io.dapr.DaprServiceApplicationKt</mainClass>
+							<mainClass>scm.DaprServiceApplicationKt</mainClass>
 							<classifier>exec</classifier>
 							<finalName>dapr-service</finalName>
 						</configuration>

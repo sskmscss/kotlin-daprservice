@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft Corporation.
  * Licensed under the MIT License.
  */
-package io.dapr.service
+package scm.service
 
 import com.mongodb.client.MongoChangeStreamCursor
 import com.mongodb.client.MongoCollection
@@ -12,8 +12,8 @@ import com.mongodb.client.model.Projections.fields
 import com.mongodb.client.model.Projections.include
 import com.mongodb.client.model.changestream.ChangeStreamDocument
 import com.mongodb.client.model.changestream.FullDocument
-import io.dapr.utility.DataBaseConnectionConfig
-import io.dapr.utility.Utility
+import scm.utility.DataBaseConnectionConfig
+import scm.utility.Utility
 import org.bson.Document
 
 /**
@@ -24,10 +24,7 @@ import org.bson.Document
  * dapr run --components-path ./components --app-id changestream --dapr-http-port 3007 -- java -jar
  * target/dapr-service-exec.jar io.dapr.service.ChangeStream
  */
-object ChangeStream {
-    //The title of the topic to be used for publishing
-    private const val TOPIC_NAME = "aksKafkaTest"
-    private const val PUBSUB_NAME = "pubsub"
+object StoreOrderReference {
 
     /**
      * This is the entry point of the publisher app example.
@@ -77,7 +74,7 @@ object ChangeStream {
                 var csDoc: ChangeStreamDocument<org.bson.Document>  = cursor.next()
                 println("POSTED VALUE: " + csDoc.toString())
                 //Publishing messages
-                Utility.publish(ChangeStream.PUBSUB_NAME, ChangeStream.TOPIC_NAME, csDoc.toString())
+                Utility.publish(Utility.getConfig()["pubsub"].toString(), Utility.getConfig()["topic"].toString(), csDoc.toString())
             }
 
             cursor.close()

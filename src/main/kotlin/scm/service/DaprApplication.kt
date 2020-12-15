@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft Corporation.
  * Licensed under the MIT License.
  */
-package io.dapr.service
+package scm.service
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  * Dapr's HTTP callback implementation via SpringBoot.
  * Scanning package io.dapr.springboot is required.
  */
-@SpringBootApplication(scanBasePackages = ["io.dapr.springboot", "io.dapr.service"])
+@SpringBootApplication(scanBasePackages = ["io.dapr.springboot", "scm.service"])
 class DaprApplication {
     /**
      * Starts Dapr's callback in a given port.

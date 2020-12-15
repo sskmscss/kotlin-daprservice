@@ -2,12 +2,12 @@
  * Copyright (c) Microsoft Corporation.
  * Licensed under the MIT License.
  */
-package io.dapr.service
+package scm.service
 
 import kotlin.jvm.JvmStatic
 import java.lang.Exception
 
-import io.dapr.utility.Utility
+import scm.utility.Utility
 
 /**
  * Message publisher.
@@ -20,14 +20,6 @@ import io.dapr.utility.Utility
 object Publisher {
     private const val NUM_MESSAGES = 2
 
-    //The title of the topic to be used for publishing
-    private const val TOPIC_NAME = "aksKafkaTest"
-
-    //private static final String TOPIC_NAME = "ageventhub01topic01";
-    //The name of the pubseb
-    //private static final String PUBSUB_NAME = "messagebus";
-    private const val PUBSUB_NAME = "pubsub"
-
     /**
      * This is the entry point of the publisher app example.
      * @param args Args, unused.
@@ -36,11 +28,11 @@ object Publisher {
     @Throws(Exception::class)
     @JvmStatic
     fun mainFunction(args: Array<String>) {
+
         for (i in 0 until NUM_MESSAGES) {
             val message = String.format("This is message #%d", i)
             //Publishing messages
-            Utility.publish(PUBSUB_NAME, TOPIC_NAME, message)
-            println(Utility.getUtilitySecret("azurekeyvault", "deliverymomentdbapi").toString())
+            Utility.publish(Utility.getConfig()["pubsub"].toString(), Utility.getConfig()["topic"].toString(), message)
         }
     }
 }

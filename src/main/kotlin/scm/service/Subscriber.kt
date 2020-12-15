@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft Corporation.
  * Licensed under the MIT License.
  */
-package io.dapr.service
+package scm.service
 
 import org.apache.commons.cli.CommandLineParser
 import org.apache.commons.cli.DefaultParser

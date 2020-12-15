@@ -1,11 +1,31 @@
-package io.dapr.utility
+package scm.utility
 
 import io.dapr.client.DaprClient
 import io.dapr.client.DaprClientBuilder
 
-object Utility {
+import java.io.FileInputStream
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.util.*
 
+object Utility {
     var client: DaprClient? = null
+    var config: Properties?  = null
+
+    fun loadConfig() = FileInputStream(System.getProperty("user.dir") + "\\service.config").use {
+        Properties().apply {
+            load(it)
+        }
+    }
+
+    @JvmName("getConfig1")
+    fun getConfig(): Properties {
+        if(config == null){
+            config = loadConfig()
+        }
+        return config as Properties
+    }
 
     fun getClientInstance(): DaprClient? {
 
@@ -32,12 +52,10 @@ object Utility {
     }
 
     fun getUtilitySecret(secretStore: String, secretKey: String): String? {
-        println("client called::")
         val client : DaprClient = DaprClientBuilder().build()
 
-        println(client)
         var mapParams: MutableMap<String, String> = mutableMapOf<String, String>()
-        mapParams.put("metadata.namespace", "edppublic-deliverymomentcrud-dev")
+        mapParams.put("metadata.namespace", getConfig()["namespace"].toString())
 
 //        var secret = client.getSecret(secretStore,secretKey).block()
         var secret = client.getSecret(secretStore,secretKey, mapParams).block()
